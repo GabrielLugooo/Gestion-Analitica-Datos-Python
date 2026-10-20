@@ -1,0 +1,39 @@
+{
+  "sales_rows": 280891,
+  "stores": 45,
+  "departments": 81,
+  "locations": 12,
+  "date_start": "2011-01-07",
+  "date_end": "2012-10-26",
+  "sales_weeks": 95,
+  "total_weekly_sales_sum": 4448332866.7,
+  "mean_store_department_week_sales": 15836.51,
+  "median_store_department_week_sales": 7450.22,
+  "negative_sales_rows": 895,
+  "zero_sales_rows": 48,
+  "holiday_weeks": 6,
+  "regular_weeks": 89,
+  "holiday_mean_total_sales_per_week": 50845825.64,
+  "regular_mean_total_sales_per_week": 46553459.69,
+  "holiday_vs_regular_mean_change_pct": 9.22,
+  "top_department_by_sales": {
+    "Dept": "92",
+    "sales": 328105765.98
+  },
+  "top_store_by_sales": {
+    "Store": "4",
+    "sales": 203863482.57
+  },
+  "markdown_missing_rows_by_column": {
+    "MarkDown1": 1996,
+    "MarkDown2": 2810,
+    "MarkDown3": 2257,
+    "MarkDown4": 2368,
+    "MarkDown5": 1980
+  },
+  "fuel_price_scale_suspect_rows": 4233,
+  "unemployment_scale_suspect_rows": 4289,
+  "duplicate_sales_grain": 0,
+  "duplicate_features_grain": 0,
+  "sales_keys_without_store_features": 0
+}
