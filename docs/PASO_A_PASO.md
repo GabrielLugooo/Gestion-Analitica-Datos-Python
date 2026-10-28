@@ -2,7 +2,7 @@
 
 ## Consigna interpretada
 
-Henry pide mostrar el flujo completo: integrar las fuentes, limpiar y preparar datos, diseñar un DER, crear el warehouse, encontrar insights, definir KPIs y comunicar conclusiones. La entrega preparada conserva evidencia y explicaciones de cada fase.
+Se pide mostrar el flujo completo: integrar las fuentes, limpiar y preparar datos, diseñar un DER, crear el warehouse, encontrar insights, definir KPIs y comunicar conclusiones. La entrega preparada conserva evidencia y explicaciones de cada fase.
 
 ## De la fuente al resultado
 
@@ -20,6 +20,6 @@ Henry pide mostrar el flujo completo: integrar las fuentes, limpiar y preparar d
 - Venta media por observación = `AVG(Weekly_Sales)` a grano tienda-departamento-semana.
 - Venta agregada semanal = suma de `Weekly_Sales` por fecha.
 - Cambio descriptivo feriado = `(promedio de venta agregada en semanas feriado / promedio en semanas sin feriado - 1) * 100`.
-- Participación de departamento/tienda = venta del grupo / venta total * 100.
+- Participación de departamento/tienda = venta del grupo / venta total \* 100.
 
 La comparación con feriados es descriptiva. No controla estacionalidad, promociones ni la mezcla de departamentos y no debe leerse como efecto causal.

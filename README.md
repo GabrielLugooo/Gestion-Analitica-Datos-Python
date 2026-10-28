@@ -1,18 +1,19 @@
-# PI de Gestión Analítica de Datos
+# Proyecto Integrador de Gestión Analítica de Datos con Python
 
 Proyecto integrador de retail: carga, calidad de datos, modelado dimensional, exploración y KPIs a partir de ventas semanales de tiendas y departamentos.
 
 ## Entregables principales
 
-- `Informe_final.html`: informe listo para leer y compartir.
-- `docs/INFORME_FINAL.md`: versión editable del informe con todos los pasos, resultados y limitaciones.
-- `Henry_Datawarehouse.xlsx`: libro de seis hojas: ventas, contexto semanal, tiendas, departamentos, calendario y KPIs.
-- `docs/PASO_A_PASO.md`: explicación del flujo y las fórmulas.
-- `docs/DER.md`: modelo entidad-relación, granularidades y relaciones.
-- `sql/schema.sql`: propuesta de tablas relacionales.
-- `src/run_analysis.py`: proceso de limpieza conservadora, creación de tablas analíticas y cálculo de KPIs.
-- `src/build_warehouse_xlsx.py`: genera el libro Excel con el resultado del análisis.
-- `data/raw/`: CSV originales recibidos; `data/processed/`: tablas derivadas y métricas.
+- `Informe_final.html`: Informe final en HTML.
+- `src/run_analysis.py`: Proceso reproducible.
+- `src/build_warehouse_xlsx.py`: Proceso reproducible.
+- `sql/schema.sql`: El script reproducible en el repositorio.
+- `docs/DER.md`: Modelo de Entidad-Relacion.
+- `docs/Paso_a_Paso.md`: Pasos del proyecto y como repetirlo.
+- `docs/Informe_Final.md`: Este informe.
+- `data/raw/`: Fuentes intactas.
+- `data/processed/`: CSV limpios derivados.
+- `data/Datawarehouse.xlsx`: Tablas analíticas y KPIs en hojas separadas.
 
 ## Reproducir en Windows / VS Code
 
@@ -26,8 +27,8 @@ El script usa solo la biblioteca estándar de Python. Normaliza las fechas `D/M/
 
 ## Hallazgo de calidad de fuente
 
-Muchos valores de `Fuel_Price` y `Unemployment` aparecen con el separador decimal perdido. El análisis guarda el dato de origen, crea columnas limpias dividiendo por 1.000 cuando el valor excede los umbrales documentados y añade una marca de auditoría. La escala de `Size` se conserva sin reinterpretar. El workbook resuelto del material también presenta columnas con escalas alteradas; ver `docs/INFORME_FINAL.md`.
+Muchos valores de `Fuel_Price` y `Unemployment` aparecen con el separador decimal perdido. El análisis guarda el dato de origen, crea columnas limpias dividiendo por 1.000 cuando el valor excede los umbrales documentados y añade una marca de auditoría. La escala de `Size` se conserva sin reinterpretar. El workbook resuelto del material también presenta columnas con escalas alteradas; ver `docs/Informe_Final.md`.
 
 ## Fuente y uso
 
-Archivos educativos proporcionados en el material del curso de Henry. El proyecto documenta el análisis de esta copia, no realiza una evaluación causal ni un pronóstico de demanda.
+El proyecto documenta el análisis de esta copia, no realiza una evaluación causal ni un pronóstico de demanda.

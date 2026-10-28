@@ -1,8 +1,7 @@
-# Informe final del Proyecto Integrador
+# Proyecto Integrador de Gestion analitica de Datos con Python
 
 ## Descubriendo el éxito comercial con datos de ventas minoristas
 
-**Curso:** Gestión Analítica de Datos — Henry  
 **Alcance:** 45 tiendas, 81 departamentos y 95 semanas con ventas entre el 7 de enero de 2011 y el 26 de octubre de 2012.
 
 ## Resumen ejecutivo
@@ -13,13 +12,13 @@ Las seis semanas etiquetadas como feriado en el período de ventas promedian 50,
 
 ## 1. Fuente, alcance y granularidad
 
-La presentación de Henry propone consolidar los datasets, limpiar y preparar variables, diseñar el diagrama entidad-relación, crear la base, buscar insights y definir métricas/KPIs. Se revisaron los tres CSV originales y el `Datawarehouse.xlsx` que acompaña el material como ejemplo resuelto.
+La presentación propone consolidar los datasets, limpiar y preparar variables, diseñar el diagrama entidad-relación, crear la base, buscar insights y definir métricas/KPIs. Se revisaron los tres CSV originales y el `Datawarehouse.xlsx` que acompaña el material como ejemplo resuelto.
 
-| Archivo | Filas | Granularidad | Uso |
-|---|---:|---|---|
-| `sales.csv` | 280.891 | tienda + departamento + semana | Ventas semanales y etiqueta de feriado |
-| `features.csv` | 4.680 | tienda + semana | Clima, precios, promociones e indicadores económicos |
-| `stores.csv` | 45 | tienda | Tipo y tamaño reportado |
+| Archivo        |   Filas | Granularidad                   | Uso                                                  |
+| -------------- | ------: | ------------------------------ | ---------------------------------------------------- |
+| `sales.csv`    | 280.891 | tienda + departamento + semana | Ventas semanales y etiqueta de feriado               |
+| `features.csv` |   4.680 | tienda + semana                | Clima, precios, promociones e indicadores económicos |
+| `stores.csv`   |      45 | tienda                         | Tipo y tamaño reportado                              |
 
 Las ventas cubren 95 semanas consecutivas observadas desde 2011-01-07 hasta 2012-10-26. Las variables de contexto cubren 104 semanas hasta 2012-12-28. El calendario de ventas contiene 12 ubicaciones, 45 tiendas y 81 departamentos. El análisis no extrapola ventas a las nueve semanas posteriores al último registro de ventas.
 
@@ -30,12 +29,12 @@ Se preservaron los CSV originales en `data/raw/` y se aplicó un proceso reprodu
 1. **Encabezados y tipos:** se conservaron los nombres de campos; `Store` y `Dept` se normalizaron a enteros en forma de texto para claves consistentes; ventas y campos numéricos se interpretan como números; `IsHoliday` como booleano.
 2. **Fechas:** los CSV usan `D/M/YYYY`. Se interpretaron con ese formato y se convirtieron a ISO (`YYYY-MM-DD`). La interpretación queda respaldada por las 104 fechas semanales de `features.csv`, que caen en viernes; las claves de fecha de ventas encuentran correspondencia en features.
 3. **Faltantes:** los valores `NA` de MarkDown se convierten en nulos y se agregan columnas `*_is_missing`. No se imputan como cero: “sin dato” no equivale necesariamente a “sin promoción”. La ausencia alcanza entre 42 % y 60 % según el campo.
-4. **Escalas numéricas:** 4.233 de 4.680 valores de `Fuel_Price` exceden 10 y 4.289 valores de `Unemployment` exceden 20, mientras que el resto cae en escalas plausibles. Para hacer el análisis comparable, cuando el valor supera esos umbrales se divide por 1.000 y se guarda en `Fuel_Price_clean` o `Unemployment_clean`. Se conserva el valor recibido y se activa `*_scale_suspect`; las columnas originales nunca se sobrescriben. Este patrón indica pérdida del separador decimal. La regla es auditable, pero se recomienda contrastarla con Henry/la fuente original antes de usarla en una decisión operativa.
+4. **Escalas numéricas:** 4.233 de 4.680 valores de `Fuel_Price` exceden 10 y 4.289 valores de `Unemployment` exceden 20, mientras que el resto cae en escalas plausibles. Para hacer el análisis comparable, cuando el valor supera esos umbrales se divide por 1.000 y se guarda en `Fuel_Price_clean` o `Unemployment_clean`. Se conserva el valor recibido y se activa `*_scale_suspect`; las columnas originales nunca se sobrescriben. Este patrón indica pérdida del separador decimal. La regla es auditable, pero se recomienda contrastarla con la fuente original antes de usarla en una decisión operativa.
 5. **Tamaño de tiendas:** se conserva como `Size_raw`. La escala/ unidad no puede confirmarse con los archivos disponibles, así que no se usa para conclusiones ni se corrige automáticamente.
 6. **Ventas negativas y cero:** se mantienen 895 valores negativos y 48 ceros. Pueden representar devoluciones, ajustes o casos especiales; eliminarlos sin una regla de negocio sesgaría los resultados. Conviene investigarlos con quien conozca la fuente.
 7. **Duplicados y relaciones:** no hay duplicados en las granularidades declaradas (`Store + Dept + Date` para ventas y `Store + Date` para features); no faltan claves de tienda ni cruces tienda-fecha. No se detectó una fila de ventas sin tienda-semana de contexto.
 
-### Observación sobre el Excel resuelto de Henry
+### Observación sobre el Excel
 
 El libro de ejemplo no debe tomarse como fuente de verdad para todas las columnas: allí `CPI` aparece transformado, por ejemplo 211,4047419 pasa a 2,114047419E9; `Fuel_Price` 2,976 aparece como 2.976 y `Unemployment` 7,742 como 7.742. La versión de entrega se generó desde los CSV iniciales y mantiene por separado valor original, valor corregido e indicador de corrección. Se recomienda entregar esta versión y aclarar el hallazgo si Henry solicita comparar con el ejemplo.
 
@@ -50,7 +49,7 @@ La propuesta separa ventas del contexto semanal porque una observación de `feat
 - `DIM_DATE`: fecha, año, mes, trimestre, semana ISO, día e indicador de feriado.
 - `DIM_LOCATION`: catálogo derivado de códigos de ubicación.
 
-Las claves y relaciones están detalladas en `DER.md`; `schema.sql` contiene una propuesta SQL. El Excel `Henry_Datawarehouse.xlsx` entrega las hojas Ventas, Contexto_Tienda_Semana, Tiendas, Departamentos, Calendario y KPIs; las mismas tablas también están disponibles como CSV en `data/processed/`.
+Las claves y relaciones están detalladas en `DER.md`; `schema.sql` contiene una propuesta SQL. El Excel `Datawarehouse.xlsx` entrega las hojas Ventas, Contexto_Tienda_Semana, Tiendas, Departamentos, Calendario y KPIs; las mismas tablas también están disponibles como CSV en `data/processed/`.
 
 ## 4. Insights
 
@@ -61,27 +60,33 @@ Las claves y relaciones están detalladas en `DER.md`; `schema.sql` contiene una
 
 ## 5. Métricas y KPIs
 
-| KPI / métrica | Definición | Resultado |
-|---|---|---:|
-| Venta total observada | Suma de `Weekly_Sales` en todas las filas | 4.448.332.866,70 |
-| Venta media por combinación | Promedio de venta por tienda-departamento-semana | 15.836,51 |
-| Venta mediana por combinación | Mediana de venta por tienda-departamento-semana | 7.450,22 |
-| Venta semanal agregada media en feriados | Promedio de la suma semanal entre tiendas y departamentos | 50.845.825,64 (6 semanas) |
-| Venta semanal agregada media sin feriado | Promedio de suma semanal | 46.553.459,69 (89 semanas) |
-| Variación descriptiva feriado vs. resto | (media feriado / media no feriado − 1) × 100 | +9,22 % |
-| Departamento con mayor venta total | Suma por departamento | 92: 328.105.765,98 |
-| Tienda con mayor venta total | Suma por tienda | 4: 203.863.482,57 |
-| Filas con venta negativa / cero | Conteos conservados para investigar | 895 / 48 |
+| KPI / métrica                            | Definición                                                |                  Resultado |
+| ---------------------------------------- | --------------------------------------------------------- | -------------------------: |
+| Venta total observada                    | Suma de `Weekly_Sales` en todas las filas                 |           4.448.332.866,70 |
+| Venta media por combinación              | Promedio de venta por tienda-departamento-semana          |                  15.836,51 |
+| Venta mediana por combinación            | Mediana de venta por tienda-departamento-semana           |                   7.450,22 |
+| Venta semanal agregada media en feriados | Promedio de la suma semanal entre tiendas y departamentos |  50.845.825,64 (6 semanas) |
+| Venta semanal agregada media sin feriado | Promedio de suma semanal                                  | 46.553.459,69 (89 semanas) |
+| Variación descriptiva feriado vs. resto  | (media feriado / media no feriado − 1) × 100              |                    +9,22 % |
+| Departamento con mayor venta total       | Suma por departamento                                     |         92: 328.105.765,98 |
+| Tienda con mayor venta total             | Suma por tienda                                           |          4: 203.863.482,57 |
+| Filas con venta negativa / cero          | Conteos conservados para investigar                       |                   895 / 48 |
 
 La fuente no identifica explícitamente moneda, por eso los valores se presentan sin símbolo. El indicador de feriado compara totales semanales y no ventas medias por tienda o departamento; usa solo las semanas disponibles.
 
 ## 6. Conclusiones y próximos pasos
 
-El proyecto permite recorrer el ciclo de análisis: integrar archivos, normalizar fechas y tipos, hacer visibles los faltantes/anomalías, construir un modelo con granularidad explícita y comunicar resultados con KPIs. La mayor prioridad antes de profundizar es validar con Henry los separadores y la unidad de `Size`, además de confirmar qué significan `NA` en MarkDown y las ventas negativas. Una vez confirmadas esas definiciones, el siguiente análisis útil sería comparar cada tienda/departamento consigo mismo a lo largo del tiempo, controlar estacionalidad y promociones, y evaluar un pronóstico separado de este informe descriptivo.
+El proyecto permite recorrer el ciclo de análisis: integrar archivos, normalizar fechas y tipos, hacer visibles los faltantes/anomalías, construir un modelo con granularidad explícita y comunicar resultados con KPIs. La mayor prioridad antes de profundizar es validar con los separadores y la unidad de `Size`, además de confirmar qué significan `NA` en MarkDown y las ventas negativas. Una vez confirmadas esas definiciones, el siguiente análisis útil sería comparar cada tienda/departamento consigo mismo a lo largo del tiempo, controlar estacionalidad y promociones, y evaluar un pronóstico separado de este informe descriptivo.
 
 ## Archivos de entrega
 
-- `Henry_Datawarehouse.xlsx`: tablas analíticas y KPIs en hojas separadas.
-- `Informe_final.html` y este informe Markdown.
-- `DER.md`, `schema.sql` y el script reproducible en el repositorio.
-- CSV limpios derivados en `data/processed/`; fuentes intactas en `data/raw/`.
+- `Informe_final.html`: Informe final en HTML.
+- `src/run_analysis.py`: Proceso reproducible.
+- `src/build_warehouse_xlsx.py`: Proceso reproducible.
+- `sql/schema.sql`: El script reproducible en el repositorio.
+- `docs/DER.md`: Modelo de Entidad-Relacion.
+- `docs/Paso_a_Paso.md`: Pasos del proyecto y como repetirlo.
+- `docs/Informe_Final.md`: Este informe.
+- `data/raw/`: Fuentes intactas.
+- `data/processed/`: CSV limpios derivados.
+- `data/Datawarehouse.xlsx`: Tablas analíticas y KPIs en hojas separadas.
