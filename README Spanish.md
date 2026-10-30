@@ -9,7 +9,7 @@
 
 Este es un proyecto integrador de retail: carga, calidad de datos, modelado dimensional, exploración y KPIs a partir de ventas semanales de tiendas y departamentos.
 
-# Habilidades Aprendidas
+## Habilidades Aprendidas
 
 - Importación y análisis de datos con `Python`.
 - Lectura y manipulación de archivos `.csv` y `.xlsx`.

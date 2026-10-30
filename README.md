@@ -9,7 +9,7 @@
 
 This is a retail-focused integrative project covering data loading, data quality, dimensional modeling, data exploration, and the development of KPIs based on weekly sales data from various stores and departments.
 
-# Skills Acquired
+## Skills Acquired
 
 - Data import and analysis using `Python`.
 - Reading and manipulating `.csv` and `.xlsx` files.
