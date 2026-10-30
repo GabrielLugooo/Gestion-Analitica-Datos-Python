@@ -2,7 +2,7 @@
 
 # GESTION ANALITICA DE DATOS CON PYTHON
 
-<a href="https://github.com/GabrielLugooo/Gestion-Analitica-Datos-Python/blob/main/README%20Spanish.md" target="_blank" rel="noreferrer noopener"> <img align="center" src="https://img.shields.io/badge/Analitica%20Datos%20Pyton%20Español-000000" alt="Analitica Datos Python Español" /></a>
+<a href="https://github.com/GabrielLugooo/Gestion-Analitica-Datos-Python/blob/main/README%20Spanish.md" target="_blank" rel="noreferrer noopener"> <img align="center" src="https://img.shields.io/badge/Analitica%20Datos%20Python%20Español-000000" alt="Analitica Datos Python Español" /></a>
 <a href="https://github.com/GabrielLugooo/Gestion-Analitica-Datos-Python/blob/main/README.md" target="_blank" rel="noreferrer noopener"> <img align="center" src="https://img.shields.io/badge/Analitica%20Datos%20Python%20Inglés-green" alt="Analitica Datos Python Inglés" /></a>
 
 ## Objetivos
@@ -100,9 +100,8 @@ El proyecto documenta el análisis de esta copia, no realiza una evaluación cau
 <p align="left">
 <a href="https://github.com/GabrielLugooo/GabrielLugooo/blob/main/README%20Spanish.md" target="_blank" rel="noreferrer noopener"> <img align="center" src="https://img.shields.io/badge/Versión%20Español-000000" alt="Versión Español" /></a>
 <a href="https://github.com/GabrielLugooo/GabrielLugooo/blob/main/README.md" target="_blank" rel="noreferrer noopener"> <img align="center" src="https://img.shields.io/badge/Versión%20Inglés-Green" alt="Versión Inglés" /></a>
-
 </p>
 
 <a href="https://linktr.ee/gabriellugooo" target="_blank" rel="noreferrer noopener"> <img align="center" src="https://img.shields.io/badge/Créditos-Gabriel%20Lugo-green" alt="Créditos" /></a>
 <img align="center" src="https://komarev.com/ghpvc/?username=GabrielLugoo&label=Vistas%20del%20Perfil&color=green&base=1" alt="GabrielLugooo" />
-<a href="" target="_blank" rel="noreferrer noopener"> <img align="center" src="https://img.shields.io/badge/Licencia-MIT-green" alt="Licencia MIT " /></a>
+<a href="" target="_blank" rel="noreferrer noopener"> <img align="center" src="https://img.shields.io/badge/Licencia-MIT-green" alt="Licencia MIT" /></a>
